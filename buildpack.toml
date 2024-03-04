@@ -1,0 +1,54 @@
+api = "0.7"
+
+[buildpack]
+  homepage = "https://github.com/taylorono/pnpm"
+  id = "taylorono/pnpm"
+  version = "0.0.1"
+  name = "Buildpack for Pnpm"
+  sbom-formats = ["application/vnd.cyclonedx+json", "application/spdx+json", "application/vnd.syft+json"]
+
+  [[buildpack.licenses]]
+    type = "Apache-2.0"
+    uri = "https://github.com/taylorono/pnpm/blob/main/LICENSE"
+
+[metadata]
+  include-files = ["bin/run", "bin/build", "bin/detect", "buildpack.toml"]
+  pre-package = "./scripts/build.sh"
+  [metadata.default_versions]
+    pnpm = "8.15.3"
+
+  [[metadata.dependencies]]
+    checksum = "sha256:8b61656ba53ac21e0460c6d4ab07099babc514dd5c570a6a02df7a13ed37e89d"
+    cpe = "cpe:2.3:a:pnpm:pnpm:8.15.3:*:*:*:*:*:*:*"
+    purl = "pkg:generic/pnpm@8.15.3?checksum=8b61656ba53ac21e0460c6d4ab07099babc514dd5c570a6a02df7a13ed37e89d&download_url=https://github.com/pnpm/pnpm/releases/download/v8.15.3/pnpm-linux-x64"
+    id = "pnpm"
+    name = "pnpm"
+    stacks = [ "io.buildpacks.stacks.bionic","io.buildpacks.stacks.jammy", "*" ]
+    uri = "https://github.com/pnpm/pnpm/releases/download/v8.15.3/pnpm-linux-x64"
+    strip-components = 1
+    version = "8.15.3"
+
+  [[metadata.dependencies]]
+    checksum = "sha256:527561d4f757b99fe5a484e991a71c25f5a5d4b0b94ca35345d2557fd9ff9832"
+    cpe = "cpe:2.3:a:pnpm:pnpm:8.15.2:*:*:*:*:*:*:*"
+    purl = "pkg:generic/pnpm@8.15.2?checksum=527561d4f757b99fe5a484e991a71c25f5a5d4b0b94ca35345d2557fd9ff9832&download_url=https://github.com/pnpm/pnpm/releases/download/v8.15.2/pnpm-linux-x64"
+    id = "pnpm"
+    name = "pnpm"
+    stacks = [ "io.buildpacks.stacks.bionic", "io.buildpacks.stacks.jammy", "*" ]
+    uri = "https://github.com/pnpm/pnpm/releases/download/v8.15.2/pnpm-linux-x64"
+    strip-components = 1
+    version = "8.15.2"
+
+  [[metadata.dependency-constraints]]
+    constraint = "8.*"
+    id = "pnpm"
+    patches = 3
+
+[[stacks]]
+  id = "io.buildpacks.stacks.bionic"
+
+[[stacks]]
+  id = "io.buildpacks.stacks.jammy"
+
+[[stacks]]
+  id = "*"
